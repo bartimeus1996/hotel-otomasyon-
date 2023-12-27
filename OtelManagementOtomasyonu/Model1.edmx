@@ -1,0 +1,510 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="projeFinalOtomasyonuModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="GorevTbl">
+          <Key>
+            <PropertyRef Name="GorevID" />
+          </Key>
+          <Property Name="GorevID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GorevAd" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GorevKodu" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kategori">
+          <Key>
+            <PropertyRef Name="KategoriID" />
+          </Key>
+          <Property Name="KategoriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KategoriAd" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Musteriler">
+          <Key>
+            <PropertyRef Name="Musteri_İd" />
+          </Key>
+          <Property Name="Musteri_İd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TCNO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Adress" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cinsiyet" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TeleNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="oda_numarasi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="yataklar" Type="nvarchar" MaxLength="50" />
+          <Property Name="fiyatlar" Type="int" />
+          <Property Name="checkinTarihi" Type="datetime" />
+          <Property Name="checkoutTarihi" Type="datetime" />
+          <Property Name="DogumTarihi" Type="int" />
+        </EntityType>
+        <EntityType Name="Personel">
+          <Key>
+            <PropertyRef Name="PersonelID" />
+          </Key>
+          <Property Name="PersonelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GorevId" Type="int" Nullable="false" />
+          <Property Name="SicilNo" Type="numeric" Precision="5" Scale="0" />
+          <Property Name="PersonelAd" Type="nvarchar" MaxLength="50" />
+          <Property Name="PersonelSoyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="KullaniciAd" Type="nvarchar" MaxLength="50" />
+          <Property Name="KullaniciSifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="maas" Type="nvarchar" MaxLength="50" />
+          <Property Name="DogumYil" Type="int" />
+        </EntityType>
+        <EntityType Name="Urun">
+          <Key>
+            <PropertyRef Name="UrunID" />
+          </Key>
+          <Property Name="UrunID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KategoriId" Type="int" Nullable="false" />
+          <Property Name="UrunAd" Type="nvarchar" MaxLength="50" />
+          <Property Name="BarkodNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="UrunMiktari" Type="int" />
+          <Property Name="UrunFiyati" Type="int" />
+        </EntityType>
+        <EntityType Name="UrunSatis">
+          <Key>
+            <PropertyRef Name="UrunSatisID" />
+          </Key>
+          <Property Name="UrunSatisID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SatisMiktari" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SatisTutari" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SatisTarihi" Type="datetime" Nullable="false" />
+          <Property Name="PersonelId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'projeFinalOtomasyonu.dbo.PersonelView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PersonelView">
+          <Key>
+            <PropertyRef Name="PersonelID" />
+            <PropertyRef Name="GorevId" />
+            <PropertyRef Name="GorevAd" />
+            <PropertyRef Name="GorevKodu" />
+            <PropertyRef Name="Expr1" />
+          </Key>
+          <Property Name="PersonelID" Type="int" Nullable="false" />
+          <Property Name="GorevId" Type="int" Nullable="false" />
+          <Property Name="SicilNo" Type="numeric" Precision="5" Scale="0" />
+          <Property Name="PersonelAd" Type="nvarchar" MaxLength="50" />
+          <Property Name="PersonelSoyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="KullaniciAd" Type="nvarchar" MaxLength="50" />
+          <Property Name="KullaniciSifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="DogumYil" Type="int" />
+          <Property Name="maas" Type="nvarchar" MaxLength="50" />
+          <Property Name="GorevAd" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GorevKodu" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Expr1" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'projeFinalOtomasyonu.dbo.UrunView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UrunView">
+          <Key>
+            <PropertyRef Name="UrunID" />
+            <PropertyRef Name="KategoriId" />
+            <PropertyRef Name="Expr1" />
+          </Key>
+          <Property Name="UrunID" Type="int" Nullable="false" />
+          <Property Name="KategoriId" Type="int" Nullable="false" />
+          <Property Name="KategoriAd" Type="nvarchar" MaxLength="50" />
+          <Property Name="UrunAd" Type="nvarchar" MaxLength="50" />
+          <Property Name="BarkodNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Expr1" Type="int" Nullable="false" />
+          <Property Name="UrunFiyati" Type="int" />
+          <Property Name="UrunMiktari" Type="int" />
+        </EntityType>
+        <Association Name="FK_Personel_GorevTbl">
+          <End Role="GorevTbl" Type="Self.GorevTbl" Multiplicity="1" />
+          <End Role="Personel" Type="Self.Personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GorevTbl">
+              <PropertyRef Name="GorevID" />
+            </Principal>
+            <Dependent Role="Personel">
+              <PropertyRef Name="GorevId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Urun_Kategori">
+          <End Role="Kategori" Type="Self.Kategori" Multiplicity="1" />
+          <End Role="Urun" Type="Self.Urun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategori">
+              <PropertyRef Name="KategoriID" />
+            </Principal>
+            <Dependent Role="Urun">
+              <PropertyRef Name="KategoriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UrunSatis_Personel">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="1" />
+          <End Role="UrunSatis" Type="Self.UrunSatis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="PersonelID" />
+            </Principal>
+            <Dependent Role="UrunSatis">
+              <PropertyRef Name="PersonelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="projeFinalOtomasyonuModelStoreContainer">
+          <EntitySet Name="GorevTbl" EntityType="Self.GorevTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kategori" EntityType="Self.Kategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Musteriler" EntityType="Self.Musteriler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personel" EntityType="Self.Personel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Urun" EntityType="Self.Urun" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UrunSatis" EntityType="Self.UrunSatis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonelView" EntityType="Self.PersonelView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PersonelView].[PersonelID] AS [PersonelID], 
+    [PersonelView].[GorevId] AS [GorevId], 
+    [PersonelView].[SicilNo] AS [SicilNo], 
+    [PersonelView].[PersonelAd] AS [PersonelAd], 
+    [PersonelView].[PersonelSoyad] AS [PersonelSoyad], 
+    [PersonelView].[KullaniciAd] AS [KullaniciAd], 
+    [PersonelView].[KullaniciSifre] AS [KullaniciSifre], 
+    [PersonelView].[DogumYil] AS [DogumYil], 
+    [PersonelView].[maas] AS [maas], 
+    [PersonelView].[GorevAd] AS [GorevAd], 
+    [PersonelView].[GorevKodu] AS [GorevKodu], 
+    [PersonelView].[Expr1] AS [Expr1]
+    FROM [dbo].[PersonelView] AS [PersonelView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UrunView" EntityType="Self.UrunView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UrunView].[UrunID] AS [UrunID], 
+    [UrunView].[KategoriId] AS [KategoriId], 
+    [UrunView].[KategoriAd] AS [KategoriAd], 
+    [UrunView].[UrunAd] AS [UrunAd], 
+    [UrunView].[BarkodNo] AS [BarkodNo], 
+    [UrunView].[Expr1] AS [Expr1], 
+    [UrunView].[UrunFiyati] AS [UrunFiyati], 
+    [UrunView].[UrunMiktari] AS [UrunMiktari]
+    FROM [dbo].[UrunView] AS [UrunView]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Personel_GorevTbl" Association="Self.FK_Personel_GorevTbl">
+            <End Role="GorevTbl" EntitySet="GorevTbl" />
+            <End Role="Personel" EntitySet="Personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Urun_Kategori" Association="Self.FK_Urun_Kategori">
+            <End Role="Kategori" EntitySet="Kategori" />
+            <End Role="Urun" EntitySet="Urun" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UrunSatis_Personel" Association="Self.FK_UrunSatis_Personel">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="UrunSatis" EntitySet="UrunSatis" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="projeFinalOtomasyonuModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="GorevTbl">
+          <Key>
+            <PropertyRef Name="GorevID" />
+          </Key>
+          <Property Name="GorevID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GorevAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GorevKodu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Personels" Relationship="projeFinalOtomasyonuModel.FK_Personel_GorevTbl" FromRole="GorevTbl" ToRole="Personel" />
+        </EntityType>
+        <EntityType Name="Kategori">
+          <Key>
+            <PropertyRef Name="KategoriID" />
+          </Key>
+          <Property Name="KategoriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KategoriAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Uruns" Relationship="Self.FK_Urun_Kategori" FromRole="Kategori" ToRole="Urun" />
+        </EntityType>
+        <EntityType Name="Urun">
+          <Key>
+            <PropertyRef Name="UrunID" />
+          </Key>
+          <Property Name="UrunID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KategoriId" Type="Int32" Nullable="false" />
+          <Property Name="UrunAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BarkodNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UrunMiktari" Type="Int32" />
+          <Property Name="UrunFiyati" Type="Int32" />
+          <NavigationProperty Name="Kategori" Relationship="Self.FK_Urun_Kategori" FromRole="Urun" ToRole="Kategori" />
+        </EntityType>
+        <EntityType Name="UrunSati">
+          <Key>
+            <PropertyRef Name="UrunSatisID" />
+          </Key>
+          <Property Name="UrunSatisID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SatisMiktari" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SatisTutari" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SatisTarihi" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PersonelId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Personel" Relationship="projeFinalOtomasyonuModel.FK_UrunSatis_Personel" FromRole="UrunSati" ToRole="Personel" />
+        </EntityType>
+        <EntityType Name="UrunView">
+          <Key>
+            <PropertyRef Name="UrunID" />
+            <PropertyRef Name="KategoriId" />
+            <PropertyRef Name="Expr1" />
+          </Key>
+          <Property Name="UrunID" Type="Int32" Nullable="false" />
+          <Property Name="KategoriId" Type="Int32" Nullable="false" />
+          <Property Name="KategoriAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UrunAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BarkodNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Expr1" Type="Int32" Nullable="false" />
+          <Property Name="UrunFiyati" Type="Int32" />
+          <Property Name="UrunMiktari" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_Urun_Kategori">
+          <End Role="Kategori" Type="Self.Kategori" Multiplicity="1" />
+          <End Role="Urun" Type="Self.Urun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategori">
+              <PropertyRef Name="KategoriID" />
+            </Principal>
+            <Dependent Role="Urun">
+              <PropertyRef Name="KategoriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="projeFinalOtomasyonuEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="GorevTbls" EntityType="Self.GorevTbl" />
+          <EntitySet Name="Kategoris" EntityType="Self.Kategori" />
+          <EntitySet Name="Uruns" EntityType="Self.Urun" />
+          <EntitySet Name="UrunSatis" EntityType="Self.UrunSati" />
+          <EntitySet Name="UrunViews" EntityType="Self.UrunView" />
+          <AssociationSet Name="FK_Urun_Kategori" Association="Self.FK_Urun_Kategori">
+            <End Role="Kategori" EntitySet="Kategoris" />
+            <End Role="Urun" EntitySet="Uruns" />
+          </AssociationSet>
+          <EntitySet Name="Musterilers" EntityType="projeFinalOtomasyonuModel.Musteriler" />
+          <EntitySet Name="Personels" EntityType="projeFinalOtomasyonuModel.Personel" />
+          <EntitySet Name="PersonelViews" EntityType="projeFinalOtomasyonuModel.PersonelView" />
+          <AssociationSet Name="FK_Personel_GorevTbl" Association="projeFinalOtomasyonuModel.FK_Personel_GorevTbl">
+            <End Role="GorevTbl" EntitySet="GorevTbls" />
+            <End Role="Personel" EntitySet="Personels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UrunSatis_Personel" Association="projeFinalOtomasyonuModel.FK_UrunSatis_Personel">
+            <End Role="Personel" EntitySet="Personels" />
+            <End Role="UrunSati" EntitySet="UrunSatis" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Musteriler">
+          <Key>
+            <PropertyRef Name="Musteri_İd" />
+          </Key>
+          <Property Name="Musteri_İd" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TCNO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Soyad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cinsiyet" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TeleNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sifre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="oda_numarasi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="yataklar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fiyatlar" Type="Int32" />
+          <Property Name="checkinTarihi" Type="DateTime" Precision="3" />
+          <Property Name="checkoutTarihi" Type="DateTime" Precision="3" />
+          <Property Name="DogumTarihi" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Personel">
+          <Key>
+            <PropertyRef Name="PersonelID" />
+          </Key>
+          <Property Name="PersonelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GorevId" Type="Int32" Nullable="false" />
+          <Property Name="SicilNo" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="PersonelAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersonelSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KullaniciAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KullaniciSifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="maas" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DogumYil" Type="Int32" />
+          <NavigationProperty Name="GorevTbl" Relationship="projeFinalOtomasyonuModel.FK_Personel_GorevTbl" FromRole="Personel" ToRole="GorevTbl" />
+          <NavigationProperty Name="UrunSatis" Relationship="projeFinalOtomasyonuModel.FK_UrunSatis_Personel" FromRole="Personel" ToRole="UrunSati" />
+        </EntityType>
+        <EntityType Name="PersonelView">
+          <Key>
+            <PropertyRef Name="PersonelID" />
+            <PropertyRef Name="GorevId" />
+            <PropertyRef Name="GorevAd" />
+            <PropertyRef Name="GorevKodu" />
+            <PropertyRef Name="Expr1" />
+          </Key>
+          <Property Name="PersonelID" Type="Int32" Nullable="false" />
+          <Property Name="GorevId" Type="Int32" Nullable="false" />
+          <Property Name="SicilNo" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="PersonelAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersonelSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KullaniciAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KullaniciSifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DogumYil" Type="Int32" />
+          <Property Name="maas" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GorevAd" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GorevKodu" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Expr1" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Personel_GorevTbl">
+          <End Type="projeFinalOtomasyonuModel.GorevTbl" Role="GorevTbl" Multiplicity="1" />
+          <End Type="projeFinalOtomasyonuModel.Personel" Role="Personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GorevTbl">
+              <PropertyRef Name="GorevID" />
+            </Principal>
+            <Dependent Role="Personel">
+              <PropertyRef Name="GorevId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UrunSatis_Personel">
+          <End Type="projeFinalOtomasyonuModel.Personel" Role="Personel" Multiplicity="1" />
+          <End Type="projeFinalOtomasyonuModel.UrunSati" Role="UrunSati" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="PersonelID" />
+            </Principal>
+            <Dependent Role="UrunSati">
+              <PropertyRef Name="PersonelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="projeFinalOtomasyonuModelStoreContainer" CdmEntityContainer="projeFinalOtomasyonuEntities1">
+          <EntitySetMapping Name="GorevTbls">
+            <EntityTypeMapping TypeName="projeFinalOtomasyonuModel.GorevTbl">
+              <MappingFragment StoreEntitySet="GorevTbl">
+                <ScalarProperty Name="GorevID" ColumnName="GorevID" />
+                <ScalarProperty Name="GorevAd" ColumnName="GorevAd" />
+                <ScalarProperty Name="GorevKodu" ColumnName="GorevKodu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kategoris">
+            <EntityTypeMapping TypeName="projeFinalOtomasyonuModel.Kategori">
+              <MappingFragment StoreEntitySet="Kategori">
+                <ScalarProperty Name="KategoriID" ColumnName="KategoriID" />
+                <ScalarProperty Name="KategoriAd" ColumnName="KategoriAd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uruns">
+            <EntityTypeMapping TypeName="projeFinalOtomasyonuModel.Urun">
+              <MappingFragment StoreEntitySet="Urun">
+                <ScalarProperty Name="UrunID" ColumnName="UrunID" />
+                <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
+                <ScalarProperty Name="UrunAd" ColumnName="UrunAd" />
+                <ScalarProperty Name="BarkodNo" ColumnName="BarkodNo" />
+                <ScalarProperty Name="UrunMiktari" ColumnName="UrunMiktari" />
+                <ScalarProperty Name="UrunFiyati" ColumnName="UrunFiyati" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UrunSatis">
+            <EntityTypeMapping TypeName="projeFinalOtomasyonuModel.UrunSati">
+              <MappingFragment StoreEntitySet="UrunSatis">
+                <ScalarProperty Name="UrunSatisID" ColumnName="UrunSatisID" />
+                <ScalarProperty Name="SatisMiktari" ColumnName="SatisMiktari" />
+                <ScalarProperty Name="SatisTutari" ColumnName="SatisTutari" />
+                <ScalarProperty Name="SatisTarihi" ColumnName="SatisTarihi" />
+                <ScalarProperty Name="PersonelId" ColumnName="PersonelId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UrunViews">
+            <EntityTypeMapping TypeName="projeFinalOtomasyonuModel.UrunView">
+              <MappingFragment StoreEntitySet="UrunView">
+                <ScalarProperty Name="UrunID" ColumnName="UrunID" />
+                <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
+                <ScalarProperty Name="KategoriAd" ColumnName="KategoriAd" />
+                <ScalarProperty Name="UrunAd" ColumnName="UrunAd" />
+                <ScalarProperty Name="BarkodNo" ColumnName="BarkodNo" />
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+                <ScalarProperty Name="UrunFiyati" ColumnName="UrunFiyati" />
+                <ScalarProperty Name="UrunMiktari" ColumnName="UrunMiktari" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Musterilers">
+            <EntityTypeMapping TypeName="projeFinalOtomasyonuModel.Musteriler">
+              <MappingFragment StoreEntitySet="Musteriler">
+                <ScalarProperty Name="DogumTarihi" ColumnName="DogumTarihi" />
+                <ScalarProperty Name="checkoutTarihi" ColumnName="checkoutTarihi" />
+                <ScalarProperty Name="checkinTarihi" ColumnName="checkinTarihi" />
+                <ScalarProperty Name="fiyatlar" ColumnName="fiyatlar" />
+                <ScalarProperty Name="yataklar" ColumnName="yataklar" />
+                <ScalarProperty Name="oda_numarasi" ColumnName="oda_numarasi" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="TeleNum" ColumnName="TeleNum" />
+                <ScalarProperty Name="Cinsiyet" ColumnName="Cinsiyet" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="TCNO" ColumnName="TCNO" />
+                <ScalarProperty Name="Musteri_İd" ColumnName="Musteri_İd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personels">
+            <EntityTypeMapping TypeName="projeFinalOtomasyonuModel.Personel">
+              <MappingFragment StoreEntitySet="Personel">
+                <ScalarProperty Name="DogumYil" ColumnName="DogumYil" />
+                <ScalarProperty Name="maas" ColumnName="maas" />
+                <ScalarProperty Name="KullaniciSifre" ColumnName="KullaniciSifre" />
+                <ScalarProperty Name="KullaniciAd" ColumnName="KullaniciAd" />
+                <ScalarProperty Name="PersonelSoyad" ColumnName="PersonelSoyad" />
+                <ScalarProperty Name="PersonelAd" ColumnName="PersonelAd" />
+                <ScalarProperty Name="SicilNo" ColumnName="SicilNo" />
+                <ScalarProperty Name="GorevId" ColumnName="GorevId" />
+                <ScalarProperty Name="PersonelID" ColumnName="PersonelID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonelViews">
+            <EntityTypeMapping TypeName="projeFinalOtomasyonuModel.PersonelView">
+              <MappingFragment StoreEntitySet="PersonelView">
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+                <ScalarProperty Name="GorevKodu" ColumnName="GorevKodu" />
+                <ScalarProperty Name="GorevAd" ColumnName="GorevAd" />
+                <ScalarProperty Name="maas" ColumnName="maas" />
+                <ScalarProperty Name="DogumYil" ColumnName="DogumYil" />
+                <ScalarProperty Name="KullaniciSifre" ColumnName="KullaniciSifre" />
+                <ScalarProperty Name="KullaniciAd" ColumnName="KullaniciAd" />
+                <ScalarProperty Name="PersonelSoyad" ColumnName="PersonelSoyad" />
+                <ScalarProperty Name="PersonelAd" ColumnName="PersonelAd" />
+                <ScalarProperty Name="SicilNo" ColumnName="SicilNo" />
+                <ScalarProperty Name="GorevId" ColumnName="GorevId" />
+                <ScalarProperty Name="PersonelID" ColumnName="PersonelID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="47464525541b4128a36530b6fbd872de" Name="Diagram1">
+        <EntityTypeShape EntityType="projeFinalOtomasyonuModel.GorevTbl" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="projeFinalOtomasyonuModel.Kategori" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="projeFinalOtomasyonuModel.Urun" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="projeFinalOtomasyonuModel.UrunSati" Width="1.5" PointX="6.375" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="projeFinalOtomasyonuModel.UrunView" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="projeFinalOtomasyonuModel.FK_Urun_Kategori" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="projeFinalOtomasyonuModel.Musteriler" Width="1.5" PointX="5.375" PointY="4.5" />
+        <EntityTypeShape EntityType="projeFinalOtomasyonuModel.Personel" Width="1.5" PointX="3.375" PointY="0.875" />
+        <EntityTypeShape EntityType="projeFinalOtomasyonuModel.PersonelView" Width="1.5" PointX="0.75" PointY="8.75" />
+        <AssociationConnector Association="projeFinalOtomasyonuModel.FK_Personel_GorevTbl" />
+        <AssociationConnector Association="projeFinalOtomasyonuModel.FK_UrunSatis_Personel" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

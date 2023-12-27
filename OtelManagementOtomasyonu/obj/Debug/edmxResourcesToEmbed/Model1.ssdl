@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="projeFinalOtomasyonuModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="GorevTbl">
+    <Key>
+      <PropertyRef Name="GorevID" />
+    </Key>
+    <Property Name="GorevID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GorevAd" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="GorevKodu" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kategori">
+    <Key>
+      <PropertyRef Name="KategoriID" />
+    </Key>
+    <Property Name="KategoriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KategoriAd" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Musteriler">
+    <Key>
+      <PropertyRef Name="Musteri_İd" />
+    </Key>
+    <Property Name="Musteri_İd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TCNO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Ad" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Soyad" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Adress" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Cinsiyet" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TeleNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Sifre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="oda_numarasi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="yataklar" Type="nvarchar" MaxLength="50" />
+    <Property Name="fiyatlar" Type="int" />
+    <Property Name="checkinTarihi" Type="datetime" />
+    <Property Name="checkoutTarihi" Type="datetime" />
+    <Property Name="DogumTarihi" Type="int" />
+  </EntityType>
+  <EntityType Name="Personel">
+    <Key>
+      <PropertyRef Name="PersonelID" />
+    </Key>
+    <Property Name="PersonelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GorevId" Type="int" Nullable="false" />
+    <Property Name="SicilNo" Type="numeric" Precision="5" Scale="0" />
+    <Property Name="PersonelAd" Type="nvarchar" MaxLength="50" />
+    <Property Name="PersonelSoyad" Type="nvarchar" MaxLength="50" />
+    <Property Name="KullaniciAd" Type="nvarchar" MaxLength="50" />
+    <Property Name="KullaniciSifre" Type="nvarchar" MaxLength="50" />
+    <Property Name="maas" Type="nvarchar" MaxLength="50" />
+    <Property Name="DogumYil" Type="int" />
+  </EntityType>
+  <EntityType Name="Urun">
+    <Key>
+      <PropertyRef Name="UrunID" />
+    </Key>
+    <Property Name="UrunID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KategoriId" Type="int" Nullable="false" />
+    <Property Name="UrunAd" Type="nvarchar" MaxLength="50" />
+    <Property Name="BarkodNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="UrunMiktari" Type="int" />
+    <Property Name="UrunFiyati" Type="int" />
+  </EntityType>
+  <EntityType Name="UrunSatis">
+    <Key>
+      <PropertyRef Name="UrunSatisID" />
+    </Key>
+    <Property Name="UrunSatisID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SatisMiktari" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="SatisTutari" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="SatisTarihi" Type="datetime" Nullable="false" />
+    <Property Name="PersonelId" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'projeFinalOtomasyonu.dbo.PersonelView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="PersonelView">
+    <Key>
+      <PropertyRef Name="PersonelID" />
+      <PropertyRef Name="GorevId" />
+      <PropertyRef Name="GorevAd" />
+      <PropertyRef Name="GorevKodu" />
+      <PropertyRef Name="Expr1" />
+    </Key>
+    <Property Name="PersonelID" Type="int" Nullable="false" />
+    <Property Name="GorevId" Type="int" Nullable="false" />
+    <Property Name="SicilNo" Type="numeric" Precision="5" Scale="0" />
+    <Property Name="PersonelAd" Type="nvarchar" MaxLength="50" />
+    <Property Name="PersonelSoyad" Type="nvarchar" MaxLength="50" />
+    <Property Name="KullaniciAd" Type="nvarchar" MaxLength="50" />
+    <Property Name="KullaniciSifre" Type="nvarchar" MaxLength="50" />
+    <Property Name="DogumYil" Type="int" />
+    <Property Name="maas" Type="nvarchar" MaxLength="50" />
+    <Property Name="GorevAd" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="GorevKodu" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Expr1" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'projeFinalOtomasyonu.dbo.UrunView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="UrunView">
+    <Key>
+      <PropertyRef Name="UrunID" />
+      <PropertyRef Name="KategoriId" />
+      <PropertyRef Name="Expr1" />
+    </Key>
+    <Property Name="UrunID" Type="int" Nullable="false" />
+    <Property Name="KategoriId" Type="int" Nullable="false" />
+    <Property Name="KategoriAd" Type="nvarchar" MaxLength="50" />
+    <Property Name="UrunAd" Type="nvarchar" MaxLength="50" />
+    <Property Name="BarkodNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="Expr1" Type="int" Nullable="false" />
+    <Property Name="UrunFiyati" Type="int" />
+    <Property Name="UrunMiktari" Type="int" />
+  </EntityType>
+  <Association Name="FK_Personel_GorevTbl">
+    <End Role="GorevTbl" Type="Self.GorevTbl" Multiplicity="1" />
+    <End Role="Personel" Type="Self.Personel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GorevTbl">
+        <PropertyRef Name="GorevID" />
+      </Principal>
+      <Dependent Role="Personel">
+        <PropertyRef Name="GorevId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Urun_Kategori">
+    <End Role="Kategori" Type="Self.Kategori" Multiplicity="1" />
+    <End Role="Urun" Type="Self.Urun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategori">
+        <PropertyRef Name="KategoriID" />
+      </Principal>
+      <Dependent Role="Urun">
+        <PropertyRef Name="KategoriId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UrunSatis_Personel">
+    <End Role="Personel" Type="Self.Personel" Multiplicity="1" />
+    <End Role="UrunSatis" Type="Self.UrunSatis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personel">
+        <PropertyRef Name="PersonelID" />
+      </Principal>
+      <Dependent Role="UrunSatis">
+        <PropertyRef Name="PersonelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="projeFinalOtomasyonuModelStoreContainer">
+    <EntitySet Name="GorevTbl" EntityType="Self.GorevTbl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kategori" EntityType="Self.Kategori" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Musteriler" EntityType="Self.Musteriler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Personel" EntityType="Self.Personel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Urun" EntityType="Self.Urun" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UrunSatis" EntityType="Self.UrunSatis" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PersonelView" EntityType="Self.PersonelView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [PersonelView].[PersonelID] AS [PersonelID], 
+    [PersonelView].[GorevId] AS [GorevId], 
+    [PersonelView].[SicilNo] AS [SicilNo], 
+    [PersonelView].[PersonelAd] AS [PersonelAd], 
+    [PersonelView].[PersonelSoyad] AS [PersonelSoyad], 
+    [PersonelView].[KullaniciAd] AS [KullaniciAd], 
+    [PersonelView].[KullaniciSifre] AS [KullaniciSifre], 
+    [PersonelView].[DogumYil] AS [DogumYil], 
+    [PersonelView].[maas] AS [maas], 
+    [PersonelView].[GorevAd] AS [GorevAd], 
+    [PersonelView].[GorevKodu] AS [GorevKodu], 
+    [PersonelView].[Expr1] AS [Expr1]
+    FROM [dbo].[PersonelView] AS [PersonelView]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="UrunView" EntityType="Self.UrunView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [UrunView].[UrunID] AS [UrunID], 
+    [UrunView].[KategoriId] AS [KategoriId], 
+    [UrunView].[KategoriAd] AS [KategoriAd], 
+    [UrunView].[UrunAd] AS [UrunAd], 
+    [UrunView].[BarkodNo] AS [BarkodNo], 
+    [UrunView].[Expr1] AS [Expr1], 
+    [UrunView].[UrunFiyati] AS [UrunFiyati], 
+    [UrunView].[UrunMiktari] AS [UrunMiktari]
+    FROM [dbo].[UrunView] AS [UrunView]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Personel_GorevTbl" Association="Self.FK_Personel_GorevTbl">
+      <End Role="GorevTbl" EntitySet="GorevTbl" />
+      <End Role="Personel" EntitySet="Personel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Urun_Kategori" Association="Self.FK_Urun_Kategori">
+      <End Role="Kategori" EntitySet="Kategori" />
+      <End Role="Urun" EntitySet="Urun" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UrunSatis_Personel" Association="Self.FK_UrunSatis_Personel">
+      <End Role="Personel" EntitySet="Personel" />
+      <End Role="UrunSatis" EntitySet="UrunSatis" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
